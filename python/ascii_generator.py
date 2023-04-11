@@ -9,7 +9,7 @@ time = str(time.strftime("%H%M"))
 
 def main():
     image = Image.open(
-        'C:/Users/Saxly/Python projects/ascii_sequence/input/pepe2.jpg')
+        'https://raw.githubusercontent.com/MinisterSaxly/ascii_sequence/master/seq_0213.json')
     # you can first resize the image if needed
     image = image.resize((100, 50))
     ascii_art = convert_to_ascii_art(image)
