@@ -2,7 +2,7 @@ from PIL import Image
 import json
 import datetime
 import os
-
+import glob
 
 seq_location = "C:/Users/Saxly/Python projects/ascii_sequence/input/frames/vj_loop_v02/"
 # ascii_characters_by_surface = "`^\",:;Il!i~+_-?][}{1)(|tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
@@ -17,25 +17,26 @@ entries = os.listdir(seq_location)
 # for entry in entries:
 #     print(f'{seq_location}{entry}')
 
+animation = {"animation": []}
+
 
 def main():
 
-    framenr = 1
+    framenr = 0
 
-    for entry in entries:
+    for i, entry in enumerate(entries):
 
         image = Image.open(
             f'{seq_location}{entry}')
         # you can first resize the image if needed
-        # image = image.resize((100, 50))
+        image = image.resize((160, 90))
         image = image.convert('RGB')
         ascii_art = convert_to_ascii_art(image)
 
-        print(framenr)
+        print(i)
+
         print(f'{seq_location}{entry}')
-        save_as_json(ascii_art, framenr)
-        framenr += 1
-        # print(framenr)
+        save_as_json(ascii_art, i)
 
 
 def convert_to_ascii_art(image):
@@ -67,31 +68,19 @@ def save_as_text(ascii_art):
         file.close()
 
 
-def save_as_json(ascii_art, framenr):
-    # print(framenr)
+def save_as_json(ascii_art, i):
+    print(i)
     text = ""
     for line in ascii_art:
         text = text + line + ('\n')
 
-    ascii_entry = {
-        "frameNumber": framenr,
-        "frame": ascii_art
-    }
+    global animation
+    animation["animation"].append(
+        {"frameNumber": i, "frameContent": text})
 
-    jsonObject = json.dumps(ascii_entry, indent=4)
-
-    with open("looped_seq.json", "r+") as jsonfile:
-
-        # First we load existing data into a dict.
-        file_data = json.load(jsonfile)
-        # Join new_data with file_data inside emp_details
-        file_data["animation"].append(ascii_entry)
-        # Sets file's current position at offset.
-        jsonfile.seek(0)
-        # convert back to json.
-        json.dump(file_data, jsonfile, indent=4)
-
-        jsonfile.write(jsonObject)
+    # Write the animation to a JSON file
+    with open("json_output/looped_seq.json", "w") as f:
+        json.dump(animation, f, indent=4)
 
 
 if __name__ == '__main__':
