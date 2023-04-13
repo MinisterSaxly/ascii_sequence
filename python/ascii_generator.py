@@ -9,7 +9,7 @@ time = str(time.strftime("%H%M"))
 
 def main():
     image = Image.open(
-        'C:/Users/Saxly/Python projects/ascii_sequence/input/pepe2.jpg')
+        'C:/Users/Saxly/Python projects/ascii_sequence/input/frames/vj_loop_v01/.jpg')
     # you can first resize the image if needed
     image = image.resize((100, 50))
     ascii_art = convert_to_ascii_art(image)
@@ -50,7 +50,7 @@ def save_as_json(ascii_art):
 
     text = ""
     for line in ascii_art:
-        text = text + line + ('<br>')
+        text = text + line + ('\n')
 
     ascii_seq = {
         "1": text
