@@ -1,6 +1,6 @@
 body {
-    background-color: black;
-    color: aquamarine;
+    background-color: rgb(15, 29, 15);
+    color: orange;
   }
   
   .ascii {
@@ -14,5 +14,10 @@ body {
     .ascii {
       font-size: 1.3vw;
     }
+  }
+  
+  .banner {
+    text-align: center;
+    margin: auto;
   }
   
