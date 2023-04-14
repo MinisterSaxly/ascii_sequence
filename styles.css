@@ -31,10 +31,12 @@ body {
     margin: auto;
     z-index: 1;
     text-shadow: 2px 2px red;
-    animation-name: rotate-banner;
+    /* animation-name: rotate-banner;
     animation-duration: 0.5s;
     animation-timing-function: ease-out;
-    animation-iteration-count: 1;
+    animation-iteration-count: 1; */
+    animation: rotate-banner .5s ease-out;
+    animation: float 7s ease-in-out infinite;
   }
   
   @keyframes rotate-banner {
@@ -44,5 +46,18 @@ body {
     100% {
       transform: translate(-50%, -50%) rotateY(360deg);
     }
+
+    
   }
   
+  @keyframes float {
+    0% {
+      transform: translate(-50%, -50%) translateY(0);
+    }
+    50% {
+      transform: translate(-50%, -50%) translateY(-20px);
+    }
+    100% {
+      transform: translate(-50%, -50%) translateY(0);
+    }
+  }
