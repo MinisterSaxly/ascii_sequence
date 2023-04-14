@@ -30,5 +30,6 @@ body {
     transform: translate(-50%, -50%); /* translate the banner div to center it completely */
     margin: auto;
     z-index: 1; /* set z-index to 1 to position the banner above the ascii div */
+    text-shadow: 2px 2px red
   }
   

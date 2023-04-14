@@ -4,23 +4,8 @@ import datetime
 import os
 import glob
 
-seq_location = "C:/Users/Saxly/Python projects/ascii_sequence/input/frames/vj_loop_v02/"
+seq_location = "C:/Users/Saxly/Python projects/ascii_sequence/input/frames/vj_loop_v03/"
 ascii_characters_by_surface = " .:-=+*#%@"
-
-banner = '''
-                        _____                                      
- ______   _____    _____\    \  ______   _______    ____________   
-|\     \ |     |  /    / |    ||\     \  \      \  /            \  
-\ \     \|     | /    /  /___/| \\     \  |     /||\___/\  \\___/| 
- \ \           ||    |__ |___|/  \|     |/     //  \|____\  \___|/ 
-  \ \____      ||       \         |     |_____//         |  |      
-   \|___/     /||     __/ __      |     |\     \    __  /   / __   
-       /     / ||\    \  /  \    /     /|\|     |  /  \/   /_/  |  
-      /_____/  /| \____\/    |  /_____/ |/_____/| |____________/|  
-      |     | / | |    |____/| |     | / |    | | |           | /  
-      |_____|/   \|____|   | | |_____|/  |____|/  |___________|/   
-                       |___|/                                      
-'''
 
 time = datetime.datetime.now()
 time = str(time.strftime("%H%M"))
