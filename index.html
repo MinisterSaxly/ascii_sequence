@@ -7,23 +7,27 @@
     <div class="ascii">
       <pre id="animation"></pre>
       <script>
-        const url = "https://api.jsonbin.io/v3/b/64389067ebd26539d0aa996f";
+        const url = "https://api.npoint.io/895371ac0390d7ad8087";
 
-        fetch(url, {
-          headers: {
-            "X-Master-Key":
-              "$2b$10$XFW/PG7eCgAbENSHVYHSl.cOEXwN7gOnYG/ZNY1PFa9ltbXvASL7y",
-          },
-        })
+        fetch(url)
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
-            const frames = data.record.animation;
+            const frames = data.animation;
             let currentFrame = 0;
+            let reverse = false;
             const renderFrame = () => {
               const frame = frames[currentFrame].frameContent;
-              document.getElementById("animation").innerHTML = frame;
-              currentFrame = (currentFrame + 1) % frames.length;
+              document.getElementById("animation").innerHTML = frame.replace(
+                /\n/g,
+                "<br>"
+              );
+              if (currentFrame === 0) {
+                reverse = false;
+              } else if (currentFrame === frames.length - 1) {
+                reverse = true;
+              }
+              currentFrame += reverse ? -1 : 1;
             };
             setInterval(renderFrame, 100);
           })
